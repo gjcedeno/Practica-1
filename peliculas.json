@@ -1,5 +1,9 @@
 [
-  { "id": 1, "genero": "Acción", "titulo": "Misión Imposible: Sentencia mortal" },
+  {
+    "id": 1,
+    "genero": "Acción",
+    "titulo": "Misión Imposible: Sentencia mortal"
+  },
   { "id": 1, "genero": "Acción", "titulo": "Duro de Matar" },
   { "id": 1, "genero": "Acción", "titulo": "John Wick" },
   { "id": 1, "genero": "Acción", "titulo": "Mad Max: Furia en el camino" },

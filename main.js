@@ -52,7 +52,6 @@ recomendacionGeneros.addEventListener("click", (event) => {
   }
 });
 
-/////////////////////
 // Función para mostrar los botones específicos para recomendación de película
 function mostrarRecomendacionGeneros() {
   const recomendacionGeneros = document.getElementById("recomendacionGeneros");
@@ -60,11 +59,15 @@ function mostrarRecomendacionGeneros() {
 }
 ///////////////////////////
 
+// Variable para indicar si se ha obtenido una recomendación
+let recomendacionObtenida = false;
+
 // Función para recomendar una película según el género seleccionado
 function recomendarPelicula(generoSeleccionado) {
   const recomendacion = obtenerRecomendacion(generoSeleccionado);
 
   if (recomendacion) {
+    recomendacionObtenida = true;
     mostrarResultado("Te recomendaría ver: " + recomendacion);
     // Guardar la película recomendada en localStorage
     localStorage.setItem("peliculaRecomendada", recomendacion);
@@ -75,6 +78,48 @@ function recomendarPelicula(generoSeleccionado) {
       "Lo siento, no puedo recomendar una película para ese tipo."
     );
   }
+}
+
+// Función para agregar el botón "Ver Trailer"
+function agregarBotonVerTrailer() {
+  if (recomendacionObtenida) {
+    const outputDiv = document.getElementById("output");
+
+    // Crear el botón "Ver Trailer"
+    const verTrailerBtn = document.createElement("button");
+    verTrailerBtn.id = "verTrailerBtn";
+    verTrailerBtn.textContent = "Ver Trailer";
+    verTrailerBtn.style.display = "inline-block";
+    verTrailerBtn.classList.add("ver-trailer-button");
+
+    // Agregar un evento al botón para manejar la acción de ver el trailer
+    verTrailerBtn.addEventListener("click", verTrailer);
+
+    // Agregar el botón al contenedor
+    outputDiv.appendChild(verTrailerBtn);
+  }
+}
+
+// Función para ver el trailer de la película recomendada
+function verTrailer() {
+  // Obtener el enlace del trailer de la película recomendada.
+  const peliculaRecomendada = localStorage.getItem("peliculaRecomendada");
+  const busquedaEnlace = obtenerEnlaceBusqueda(peliculaRecomendada);
+
+  if (busquedaEnlace) {
+    // Abrir una nueva ventana o pestaña con la búsqueda de YouTube
+    window.open(busquedaEnlace, "_blank");
+  } else {
+    alert(
+      "Lo siento, no se pudo encontrar un enlace de búsqueda para esta película."
+    );
+  }
+}
+
+/// Función para obtener el enlace de búsqueda de YouTube para la película
+function obtenerEnlaceBusqueda(pelicula) {
+  const busqueda = encodeURIComponent(`${pelicula} trailer`);
+  return `https://www.youtube.com/results?search_query=${busqueda}`;
 }
 
 // Función para agregar un botón de Compartir por WhatsApp
@@ -101,6 +146,7 @@ function agregarBotonCompartirWhatsApp(pelicula) {
   // Configurar el botón de Compartir por WhatsApp
   botonCompartirWhatsApp.type = "submit";
   botonCompartirWhatsApp.textContent = "Compartir por WhatsApp";
+  botonCompartirWhatsApp.classList.add("whatsapp-button");
 
   // Agregar elementos al formulario
   formulario.appendChild(inputNumero);
@@ -165,6 +211,8 @@ function mostrarListaPorGenero(generoSeleccionado) {
 function mostrarResultado(mensaje) {
   const outputDiv = document.getElementById("output");
   outputDiv.innerHTML = `<p>${mensaje}</p>`;
+  // agregar el botón "Ver Trailer"
+  agregarBotonVerTrailer();
 }
 
 // Función para obtener una recomendación según el género
