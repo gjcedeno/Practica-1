@@ -4,37 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
-    <title>Document</title>
+    <title>Recomendador de Películas</title>
   </head>
   <body>
+    <h1>Recomendador de Películas</h1>
     <div class="container_principal">
-      <h1>Recomendador de Películas</h1>
-
       <h2 id="tituloPrefieres">¿Qué prefieres?</h2>
-      <button id="recomendacionBtn">Recomendación de película</button>
-      <button id="listaBtn">Ver lista por género</button>
+
+      <button id="recomendacionBtn">Recomendar Pelicula por Genero</button>
+
+      <button id="listaBtn">Recomendar Lista de Pelicula por Genero</button>
+
       <h2 id="tituloGenero" style="display: none">Elige un género</h2>
 
       <div id="output"></div>
 
       <!--Botones que se muestran al ejecutar RecomendacionPelicula-->
-      <div id="recomendacionGeneros" style="display: none">
+      <div
+        id="recomendacionGeneros"
+        class="container-botones"
+        style="display: none"
+      >
         <button class="generoBtn recomendacion" data-genero="1">Acción</button>
         <button class="generoBtn recomendacion" data-genero="2">Comedia</button>
         <button class="generoBtn recomendacion" data-genero="3">Drama</button>
-        <button class="generoBtn recomendacion" data-genero="4">
-          Ciencia ficción
-        </button>
+        <button class="generoBtn recomendacion" data-genero="4">Ficción</button>
         <button class="generoBtn recomendacion" data-genero="5">
           Animación
         </button>
       </div>
+
       <!--Botones que se muestran al ejecutar listaGenero-->
-      <div id="listaGenero" style="display: none">
+      <div id="listaGenero" class="container-botones" style="display: none">
         <button class="generoBtn" data-genero="1">Acción</button>
         <button class="generoBtn" data-genero="2">Comedia</button>
         <button class="generoBtn" data-genero="3">Drama</button>
-        <button class="generoBtn" data-genero="4">Ciencia ficción</button>
+        <button class="generoBtn" data-genero="4">ficción</button>
         <button class="generoBtn" data-genero="5">Animación</button>
       </div>
 

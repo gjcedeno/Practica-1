@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Manejo de clics en botones de género para la lista por género
+// Clics en botones de género para la lista por género
 listaGenero.addEventListener("click", (event) => {
   if (event.target.classList.contains("generoBtn")) {
     const generoSeleccionado = Number(event.target.getAttribute("data-genero"));
@@ -44,7 +44,7 @@ listaGenero.addEventListener("click", (event) => {
   }
 });
 
-// Manejo de clics en botones de género específicos para la recomendación de película
+// Clics en botones de género específicos para la recomendación de película
 recomendacionGeneros.addEventListener("click", (event) => {
   if (event.target.classList.contains("recomendacion")) {
     const generoSeleccionado = Number(event.target.getAttribute("data-genero"));
@@ -107,7 +107,7 @@ function verTrailer() {
   const busquedaEnlace = obtenerEnlaceBusqueda(peliculaRecomendada);
 
   if (busquedaEnlace) {
-    // Abrir una nueva ventana o pestaña con la búsqueda de YouTube
+    // Abrir una nueva ventana con la búsqueda de YouTube
     window.open(busquedaEnlace, "_blank");
   } else {
     alert(
@@ -134,13 +134,12 @@ function agregarBotonCompartirWhatsApp(pelicula) {
   // Configurar el formulario
   formulario.addEventListener("submit", function (event) {
     event.preventDefault();
-    // Lógica para compartir por WhatsApp
     compartirPorWhatsApp(pelicula, inputNumero.value);
   });
 
   // Configurar el input de número
   inputNumero.type = "tel";
-  inputNumero.placeholder = "Ingrese el número de WhatsApp";
+  inputNumero.placeholder = "Ingrese el número de Cel.";
   inputNumero.required = true;
 
   // Configurar el botón de Compartir por WhatsApp
@@ -151,8 +150,6 @@ function agregarBotonCompartirWhatsApp(pelicula) {
   // Agregar elementos al formulario
   formulario.appendChild(inputNumero);
   formulario.appendChild(botonCompartirWhatsApp);
-
-  // Agregar el formulario a la interfaz de usuario
   outputDiv.appendChild(formulario);
 }
 
